@@ -275,11 +275,10 @@ class dataSQL:
         return [Comment(*row) for row in raw]
 
     def is_staff(self, users_id):
-        item = self.use_database(
-            "SELECT is_staff from users where id = ?", (users_id,)
-        )[0]
 
-        if item == 0: return False 
+        if (item := self.use_database(
+            "SELECT is_staff from users where id = ?", (users_id,)
+        )[0]) == 0: return False 
         else: return True
 
 
