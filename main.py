@@ -78,7 +78,7 @@ def mePage():
             pass
         elif action == "editExp":
             database.use_database(
-                f"UPDATE experiences SET company_name = ?, company_logo_url = ?, position_title = ?, position_description = ?, dates = ? WHERE id = ?;", 
+                "UPDATE experiences SET company_name = ?, company_logo_url = ?, position_title = ?, position_description = ?, dates = ? WHERE id = ?;", 
                 (   
                     request.form.get("company_name"),
                     request.form.get("company_logo"),
@@ -112,7 +112,7 @@ def mePage():
 
         elif action == "editEdu":
             database.use_database(
-                f"UPDATE educations SET tuition_name = ?, tuition_logo_url = ?, position_description = ?, dates = ? WHERE id = ?;", 
+                "UPDATE educations SET tuition_name = ?, tuition_logo_url = ?, position_description = ?, dates = ? WHERE id = ?;", 
                 (   
                     request.form.get("campus_name"),
                     request.form.get("campus_logo"),
@@ -176,7 +176,7 @@ def verify():
 
 
             database.use_database(
-                f"UPDATE users SET email = ? WHERE id = ?;", 
+                "UPDATE users SET email = ? WHERE id = ?;", 
                 (   
                     email,
                     session["id"]
@@ -192,7 +192,7 @@ def verify():
             id = SMTP.generateCode( str(session["id"]) , user.email)
             if id == code:
                 database.use_database(
-                    f"UPDATE users SET is_verified = ? WHERE id = ?;", 
+                    "UPDATE users SET is_verified = ? WHERE id = ?;", 
                     (   
                         1,
                         session["id"]
